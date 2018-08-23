@@ -22,3 +22,6 @@ class Color(Tupl):
             return super().__mul__(other)
         else:
             return Color(self.r * other.r, self.g * other.g, self.b * other.b)
+
+    def __str__(self):
+        return '{} {} {}'.format(self.r, self.g, self.b)

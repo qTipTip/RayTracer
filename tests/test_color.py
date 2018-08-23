@@ -21,3 +21,8 @@ class TestColor(TestCase):
         c2 = Color(2, 4, 6)
 
         assert c1 * 2 == c2
+
+    def test_color_str(self):
+        c1 = Color(1, 2, 3)
+
+        assert str(c1) == '1 2 3'
