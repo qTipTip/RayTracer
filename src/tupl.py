@@ -20,6 +20,13 @@ class Tupl(object):
     def is_vector(self):
         return self.w == 1
 
+    def __eq__(self, other):
+        eps = 1.0e-14
+        return abs(self.x - other.x) < eps and \
+               abs(self.y - other.y) < eps and \
+               abs(self.z - other.z) < eps and \
+               self.w == other.w
+
 
 class Point(Tupl):
 
