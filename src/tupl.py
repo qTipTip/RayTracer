@@ -33,6 +33,9 @@ class Tupl(object):
     def __sub__(self, other):
         return Tupl(self.x - other.x, self.y - other.y, self.z - other.z, self.w - other.w)
 
+    def __neg__(self):
+        return Tupl(-self.x, -self.y, -self.z, -self.w)
+
 
 class Point(Tupl):
 

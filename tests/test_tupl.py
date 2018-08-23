@@ -37,3 +37,9 @@ class TestTupl(TestCase):
         t3 = Vector(0, 0, 4)
 
         assert t1 - t2 == t3 and (t1 - t2).is_vector()
+
+    def test_tupl_neg(self):
+        t1 = Tupl(3, 2, -5, 1)
+        t2 = Tupl(-3, -2, 5, -1)
+
+        assert -t1 == t2
