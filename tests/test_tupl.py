@@ -43,3 +43,8 @@ class TestTupl(TestCase):
         t2 = Tupl(-3, -2, 5, -1)
 
         assert -t1 == t2
+
+    def test_tupl_mul(self):
+        t1 = Tupl(3, 2, -5, 1)
+        t2 = Tupl(-9, -6, 15, -3)
+        assert t1 * -3 == t2 and -t1 * 3 == t2

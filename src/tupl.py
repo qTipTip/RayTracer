@@ -36,6 +36,9 @@ class Tupl(object):
     def __neg__(self):
         return Tupl(-self.x, -self.y, -self.z, -self.w)
 
+    def __mul__(self, scalar):
+        return Tupl(scalar * self.x, scalar * self.y, scalar * self.z, scalar * self.w)
+
 
 class Point(Tupl):
 
