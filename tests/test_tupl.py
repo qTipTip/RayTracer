@@ -1,3 +1,4 @@
+import math
 from unittest import TestCase
 from src.tupl import Tupl, Point, Vector
 
@@ -55,3 +56,10 @@ class TestTupl(TestCase):
         t2 = Tupl(1.5, 1, 2.5, 0.5)
 
         assert t1 / 2 == t2
+
+    def test_tupl_vec_magnitude(self):
+
+        t1 = Vector(1, 1, 1)
+        eps = 1.0e-14
+
+        assert abs(math.sqrt(3) - t1.magnitude) < eps

@@ -1,3 +1,6 @@
+import math
+
+
 class Tupl(object):
 
     def __init__(self, x, y, z, w):
@@ -9,9 +12,9 @@ class Tupl(object):
         :param w: point/vector id
         """
 
-        self.x = x
-        self.y = y
-        self.z = z
+        self.x = float(x)
+        self.y = float(y)
+        self.z = float(z)
         self.w = w
 
     def is_point(self):
@@ -68,3 +71,7 @@ class Vector(Tupl):
         :param z: z-coordinate
         """
         super().__init__(x, y, z, w=0)
+
+    @property
+    def magnitude(self):
+        return math.sqrt(self.x ** 2 + self.y ** 2 + self.z ** 2)
