@@ -48,3 +48,10 @@ class TestTupl(TestCase):
         t1 = Tupl(3, 2, -5, 1)
         t2 = Tupl(-9, -6, 15, -3)
         assert t1 * -3 == t2 and -t1 * 3 == t2
+
+    def test_tupl_div(self):
+
+        t1 = Tupl(3, 2, 5, 1)
+        t2 = Tupl(1.5, 1, 2.5, 0.5)
+
+        assert t1 / 2 == t2

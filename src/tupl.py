@@ -39,6 +39,12 @@ class Tupl(object):
     def __mul__(self, scalar):
         return Tupl(scalar * self.x, scalar * self.y, scalar * self.z, scalar * self.w)
 
+    def __truediv__(self, scalar):
+        if abs(scalar) < 1.0e-16:
+            raise ZeroDivisionError('Division by zero encountered in {}'.format(self.__name__))
+        else:
+            return Tupl(self.x / scalar, self.y / scalar, self.z / scalar, self.w / scalar)
+
 
 class Point(Tupl):
 
