@@ -75,3 +75,7 @@ class Vector(Tupl):
     @property
     def magnitude(self):
         return math.sqrt(self.x ** 2 + self.y ** 2 + self.z ** 2)
+
+    def normalize(self):
+        l = self.magnitude
+        return Vector(self.x / l, self.y / l, self.z / l)

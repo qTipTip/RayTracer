@@ -63,3 +63,11 @@ class TestTupl(TestCase):
         eps = 1.0e-14
 
         assert abs(math.sqrt(3) - t1.magnitude) < eps
+
+    def test_tupl_vec_normalize(self):
+
+        t1 = Vector(3, 2, 5)
+        eps = 1.0e-14
+
+        n1 = t1.normalize()
+        assert abs(n1.magnitude - 1) < eps
