@@ -27,6 +27,12 @@ class Tupl(object):
                abs(self.z - other.z) < eps and \
                self.w == other.w
 
+    def __add__(self, other):
+        return Tupl(self.x + other.x, self.y + other.y, self.z + other.z, self.w + other.w)
+
+    def __sub__(self, other):
+        return Tupl(self.x - other.x, self.y - other.y, self.z - other.z, self.w - other.w)
+
 
 class Point(Tupl):
 

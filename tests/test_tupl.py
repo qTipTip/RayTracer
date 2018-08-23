@@ -18,9 +18,22 @@ class TestTupl(TestCase):
         assert v.is_vector() and not v.is_point()
 
     def test_tupl_equality(self):
-
         t1 = Tupl(1, 2, 3, 0)
         t2 = Tupl(1, 2, 3, 1)
         t3 = Tupl(2, 3, 1, 2)
 
         assert t1 == t1 and t1 != t2 and t1 != t3
+
+    def test_tupl_add(self):
+        t1 = Tupl(3, 2, 5, 0)
+        t2 = Tupl(3, 2, 1, 1)
+        t3 = Tupl(6, 4, 6, 1)
+
+        assert t1 + t2 == t3 and (t1 + t2).is_point() and (t1 + t1).is_vector()
+
+    def test_tupl_sub(self):
+        t1 = Point(3, 2, 5)
+        t2 = Point(3, 2, 1)
+        t3 = Vector(0, 0, 4)
+
+        assert t1 - t2 == t3 and (t1 - t2).is_vector()
