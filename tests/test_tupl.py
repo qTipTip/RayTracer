@@ -1,5 +1,6 @@
 import math
 from unittest import TestCase
+
 from src.tupl import Tupl, Point, Vector
 
 
@@ -80,3 +81,13 @@ class TestTupl(TestCase):
 
         assert t1.dot(t2) == 0 and t2.dot(t1) == 0 and t2.dot(t3) == 7
 
+    def test_tupl_vec_cross(self):
+        t1 = Vector(1, 2, 3)
+        t2 = Vector(2, 3, 4)
+
+        c1 = Vector(-1, 2, -1)
+        c2 = Vector(1, -2, 1)
+
+        cross1 = t1.cross(t2)
+        cross2 = t2.cross(t1)
+        assert cross1 == c1 and cross2 == c2
