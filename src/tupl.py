@@ -15,10 +15,10 @@ class Tupl(object):
         self.w = w
 
     def is_point(self):
-        return self.w == 0
+        return self.w == 1
 
     def is_vector(self):
-        return self.w == 1
+        return self.w == 0
 
     def __eq__(self, other):
         eps = 1.0e-14
@@ -37,7 +37,7 @@ class Point(Tupl):
         :param y: y-coordinate
         :param z: z-coordinate
         """
-        super().__init__(x, y, z, w=0)
+        super().__init__(x, y, z, w=1)
 
 
 class Vector(Tupl):
@@ -49,4 +49,4 @@ class Vector(Tupl):
         :param y: y-coordinate
         :param z: z-coordinate
         """
-        super().__init__(x, y, z, w=1)
+        super().__init__(x, y, z, w=0)

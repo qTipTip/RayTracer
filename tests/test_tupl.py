@@ -7,7 +7,7 @@ class TestTupl(TestCase):
     def test_tupl_init(self):
         t = Tupl(1, 2, 3, 0)
 
-        assert t.x == 1 and t.y == 2 and t.z == 3 and t.is_point() and not t.is_vector()
+        assert t.x == 1 and t.y == 2 and t.z == 3 and t.is_vector() and not t.is_point()
 
     def test_tupl_point(self):
         p = Point(1, 2, 3)
