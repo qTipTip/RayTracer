@@ -71,3 +71,12 @@ class TestTupl(TestCase):
 
         n1 = t1.normalize()
         assert abs(n1.magnitude - 1) < eps
+
+    def test_tupl_vec_dot(self):
+
+        t1 = Vector(1, 0, 0)
+        t2 = Vector(0, 1, 1)
+        t3 = Vector(0, 3, 4)
+
+        assert t1.dot(t2) == 0 and t2.dot(t1) == 0 and t2.dot(t3) == 7
+

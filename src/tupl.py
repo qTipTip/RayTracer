@@ -79,3 +79,6 @@ class Vector(Tupl):
     def normalize(self):
         l = self.magnitude
         return Vector(self.x / l, self.y / l, self.z / l)
+
+    def dot(self, other):
+        return self.x * other.x + self.y * other.y + self.z * other.z
