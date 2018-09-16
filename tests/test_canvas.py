@@ -1,3 +1,4 @@
+import os
 from unittest import TestCase
 
 from src.canvas import Canvas
@@ -22,3 +23,16 @@ class TestCanvas(TestCase):
         c = Canvas(10, 10)
         with self.assertRaises(IndexError):
             c[100, 100]
+
+    def test_canvas_to_ppm_header(self):
+        c = Canvas(5, 3)
+        outfile = 'test_canvas_to_ppm_header.ppm'
+        c.to_ppm(outfile)
+        with open(outfile, 'r') as infile:
+            assert 'P3' in infile.readline()
+            assert '5 3' in infile.readline()
+            assert '255' in infile.readline()
+        try:
+            os.remove(outfile)
+        except:
+            pass

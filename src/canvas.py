@@ -16,4 +16,8 @@ class Canvas(object):
         return self.pixels[i * self.width + j]
 
     def to_ppm(self, filename='canvas.ppm'):
-        pass
+
+        with open(filename, 'w') as outfile:
+            outfile.write('P3 \n')
+            outfile.write('{} {}\n'.format(self.width, self.height))
+            outfile.write('255')
