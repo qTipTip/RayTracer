@@ -31,3 +31,6 @@ class Ray(object):
                 return Intersections(i2, i1)
             else:
                 return Intersections(i1, i2)
+
+    def transform(self, transformation):
+        return Ray(transformation * self.origin, transformation * self.direction)

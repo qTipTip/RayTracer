@@ -1,5 +1,6 @@
 from src.primitives import Sphere
 from src.ray import Ray
+from src.transformations import translation, scaling
 from src.tupl import Point, Vector
 
 
@@ -77,3 +78,19 @@ def test_ray_intersects_sphere_object():
     assert len(x) == 2
     assert x[0].object == s
     assert x[1].object == s
+
+
+def test_translate():
+    r = Ray(Point(1, 2, 3), Vector(0, 1, 0))
+    m = translation(3, 4, 5)
+    r2 = r.transform(m)
+    assert r2.origin == Point(4, 6, 8)
+    assert r2.direction == Vector(0, 1, 0)
+
+
+def test_scale():
+    r = Ray(Point(1, 2, 3), Vector(0, 1, 0))
+    m = scaling(2, 3, 4)
+    r2 = r.transform(m)
+    assert r2.origin == Point(2, 6, 12)
+    assert r2.direction == Vector(0, 3, 0)
