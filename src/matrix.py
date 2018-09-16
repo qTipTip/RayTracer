@@ -41,15 +41,22 @@ class Matrix(object):
         return Matrix(elements)
 
     def __mul__(self, other):
-        """Matrix tuple multiplication"""
-        if self.m != 4:
-            raise ValueError('Matrix dimensions not compatible')
 
-        x, y, z, w = [
-            sum([self[i, 0] * other.x, self[i, 1] * other.y, self[i, 2] * other.z, self[i, 3] * other.w])
-            for i in range(4)
-        ]
-        return Tupl(x, y, z, w)
+        """Matrix tuple multiplication"""
+        if isinstance(other, Tupl):
+            if self.m != 4:
+                raise ValueError('Matrix dimensions not compatible')
+
+            x, y, z, w = [
+                sum([self[i, 0] * other.x, self[i, 1] * other.y, self[i, 2] * other.z, self[i, 3] * other.w])
+                for i in range(4)
+            ]
+            return Tupl(x, y, z, w)
+        elif isinstance(other, (float, int)):
+            return Matrix([
+                [other * self[i, j] for j in range(self.m)]
+                for i in range(self.n)
+            ])
 
     @property
     def T(self):
@@ -72,6 +79,13 @@ class Matrix(object):
 
     def minor(self, row, col):
         return self.submatrix(row, col).determinant()
+
+    def cofactor(self, row, col):
+
+        if (row + col) % 2 == 0:
+            return self.minor(row, col)
+        else:
+            return self.minor(row, col) * -1
 
 
 class IdentityMatrix(Matrix):
