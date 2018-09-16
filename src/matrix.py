@@ -70,6 +70,9 @@ class Matrix(object):
             for i in range(self.n) if i != row
         ])
 
+    def minor(self, row, col):
+        return self.submatrix(row, col).determinant()
+
 
 class IdentityMatrix(Matrix):
     def __init__(self, n):

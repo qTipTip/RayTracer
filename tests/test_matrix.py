@@ -124,3 +124,15 @@ def test_matrix_submatrix_4x4():
         [2, 1, -2],
         [1, 5, 2]
     ])
+
+
+def test_matrix_minor_3x3():
+    A = Matrix([
+        [3, 5, 0],
+        [2, -1, -7],
+        [6, -1, 5]
+    ])
+    b = A.submatrix(1, 0)
+
+    assert b.determinant() == 25
+    assert A.minor(1, 0) == 25
