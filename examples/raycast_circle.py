@@ -1,10 +1,15 @@
+from math import pi
+
 from src.canvas import Canvas
 from src.color import Color
 from src.primitives import Sphere
 from src.ray import Ray
+from src.transformations import scaling, rotation_z
 from src.tupl import Point
 
 s = Sphere()
+t = rotation_z(pi / 4) @ scaling(0.5, 1, 1)
+s.set_transform(t)
 r_origin = Point(0, 0, -5)
 wall_z = 10
 wall_size = 7
