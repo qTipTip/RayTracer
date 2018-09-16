@@ -62,3 +62,25 @@ def test_matrix_identity():
     I = IdentityMatrix(4)
 
     assert A @ I == A and I @ A == A
+
+
+def test_matrix_transpose():
+    A = Matrix([
+        [1, 2, 3, 4],
+        [2, 4, 4, 2],
+        [8, 6, 4, 1],
+        [0, 0, 0, 1]
+    ])
+
+    AT = Matrix([
+        [1, 2, 8, 0],
+        [2, 4, 6, 0],
+        [3, 4, 4, 0],
+        [4, 2, 1, 1]
+    ])
+    assert A.T == AT
+
+
+def test_matrix_indentity_transpose():
+    I = IdentityMatrix(10)
+    assert I == I.T

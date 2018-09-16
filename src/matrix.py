@@ -16,11 +16,12 @@ class Matrix(object):
         return self.elements[i][j]
 
     def __eq__(self, other):
-
+        tol = 1.0e-14
         if self.n == other.n and self.m == other.m:
             for i in range(self.n):
                 for j in range(self.m):
-                    if self[i, j] != other[i, j]:
+                    if not abs(self[i, j] - other[i, j]) < tol:
+                        print(self[i, j], other[i, j])
                         return False
             else:
                 return True
@@ -50,6 +51,16 @@ class Matrix(object):
             for i in range(4)
         ]
         return Tupl(x, y, z, w)
+
+    @property
+    def T(self):
+        return Matrix([
+            [self[j, i] for j in range(self.m)]
+            for i in range(self.n)
+        ])
+
+    def transpose(self):
+        return self.T
 
 
 class IdentityMatrix(Matrix):
