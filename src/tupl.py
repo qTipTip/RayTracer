@@ -24,11 +24,11 @@ class Tupl(object):
         return self.w == 0
 
     def __eq__(self, other):
-        eps = 1.0e-14
+        eps = 1.0e-10
         return abs(self.x - other.x) < eps and \
                abs(self.y - other.y) < eps and \
                abs(self.z - other.z) < eps and \
-               self.w == other.w
+               abs(self.w - other.w) < eps
 
     def __add__(self, other):
         return Tupl(self.x + other.x, self.y + other.y, self.z + other.z, self.w + other.w)
@@ -50,6 +50,9 @@ class Tupl(object):
             raise ZeroDivisionError('Division by zero encountered in {}'.format(self.__name__))
         else:
             return Tupl(self.x / scalar, self.y / scalar, self.z / scalar, self.w / scalar)
+
+    def __repr__(self):
+        return "Tupl(x={}, y={}, z={}, w={})".format(self.x, self.y, self.z, self.w)
 
     @property
     def magnitude(self):

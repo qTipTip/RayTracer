@@ -69,3 +69,17 @@ def test_sphere_normal_normalized():
     n = s.normal_at(Point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3))
 
     assert n == n.normalize()
+
+
+def test_sphere_normal_at_translate():
+    s = Sphere()
+    s.set_transform(translation(0, 1, 0))
+    n = s.normal_at(Point(0, 1.70711, -0.70711))
+    assert n == Vector(0, 0.70711, -0.0711)
+
+
+def test_sphere_normal_at_scaled():
+    s = Sphere()
+    s.set_transform(translation(1, 0.5, 1))
+    n = s.normal_at(Point(0, sqrt(2) / 2, -sqrt(2) / 2))
+    assert n == Vector(0, 0.97014, -0.24254)
