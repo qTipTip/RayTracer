@@ -25,4 +25,4 @@ class TestColor(TestCase):
     def test_color_str(self):
         c1 = Color(1, 2, 3)
 
-        assert str(c1) == '1 2 3'
+        assert str(c1) == '1.0 2.0 3.0'
