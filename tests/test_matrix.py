@@ -84,3 +84,12 @@ def test_matrix_transpose():
 def test_matrix_indentity_transpose():
     I = IdentityMatrix(10)
     assert I == I.T
+
+
+def test_matrix_determinant_2x2():
+    A = Matrix([
+        [1, 5],
+        [-3, 2]
+    ])
+
+    assert A.determinant() == 17

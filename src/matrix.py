@@ -62,6 +62,9 @@ class Matrix(object):
     def transpose(self):
         return self.T
 
+    def determinant(self):
+        return self[0, 0] * self[1, 1] - self[0, 1] * self[1, 0]
+
 
 class IdentityMatrix(Matrix):
     def __init__(self, n):
