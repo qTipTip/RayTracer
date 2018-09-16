@@ -92,7 +92,7 @@ def test_matrix_determinant_2x2():
         [-3, 2]
     ])
 
-    assert A.determinant() == 17
+    assert A.determinant == 17
 
 
 def test_matrix_submatrix_3x3():
@@ -134,7 +134,7 @@ def test_matrix_minor_3x3():
     ])
     b = A.submatrix(1, 0)
 
-    assert b.determinant() == 25
+    assert b.determinant == 25
     assert A.minor(1, 0) == 25
 
 
@@ -149,3 +149,31 @@ def test_matrix_cofactor_3x3():
     assert A.cofactor(0, 0) == -12
     assert A.minor(1, 0) == 25
     assert A.cofactor(1, 0) == -25
+
+
+def test_matrix_determinant_3x3():
+    A = Matrix([
+        [1, 2, 6],
+        [-5, 8, -4],
+        [2, 6, 4]
+    ])
+
+    assert A.cofactor(0, 0) == 56
+    assert A.cofactor(0, 1) == 12
+    assert A.cofactor(0, 2) == -46
+    assert A.determinant == -196
+
+
+def test_matrix_determinant_4x4():
+    A = Matrix([
+        [-2, -8, 3, 5],
+        [-3, 1, 7, 3],
+        [1, 2, -9, 6],
+        [-6, 7, 7, -9]
+    ])
+
+    assert A.cofactor(0, 0) == 690
+    assert A.cofactor(0, 1) == 447
+    assert A.cofactor(0, 2) == 210
+    assert A.cofactor(0, 3) == 51
+    assert A.determinant == -4071

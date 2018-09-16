@@ -68,8 +68,12 @@ class Matrix(object):
     def transpose(self):
         return self.T
 
+    @property
     def determinant(self):
-        return self[0, 0] * self[1, 1] - self[0, 1] * self[1, 0]
+        if self.n == self.m == 2:
+            return self[0, 0] * self[1, 1] - self[0, 1] * self[1, 0]
+        else:
+            return sum([self[0, j] * self.cofactor(0, j) for j in range(self.m)])
 
     def submatrix(self, row, col):
         return Matrix([
@@ -78,7 +82,7 @@ class Matrix(object):
         ])
 
     def minor(self, row, col):
-        return self.submatrix(row, col).determinant()
+        return self.submatrix(row, col).determinant
 
     def cofactor(self, row, col):
 
