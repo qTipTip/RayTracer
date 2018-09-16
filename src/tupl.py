@@ -42,11 +42,22 @@ class Tupl(object):
     def __mul__(self, scalar):
         return Tupl(scalar * self.x, scalar * self.y, scalar * self.z, scalar * self.w)
 
+    def dot(self, other):
+        return self.x * other.x + self.y * other.y + self.z * other.z + self.w * self.w
+
     def __truediv__(self, scalar):
         if abs(scalar) < 1.0e-16:
             raise ZeroDivisionError('Division by zero encountered in {}'.format(self.__name__))
         else:
             return Tupl(self.x / scalar, self.y / scalar, self.z / scalar, self.w / scalar)
+
+    @property
+    def magnitude(self):
+        return math.sqrt(self.x ** 2 + self.y ** 2 + self.z ** 2)
+
+    def normalize(self):
+        l = self.magnitude
+        return Vector(self.x / l, self.y / l, self.z / l)
 
 
 class Point(Tupl):
@@ -71,17 +82,6 @@ class Vector(Tupl):
         :param z: z-coordinate
         """
         super().__init__(x, y, z, w=0)
-
-    @property
-    def magnitude(self):
-        return math.sqrt(self.x ** 2 + self.y ** 2 + self.z ** 2)
-
-    def normalize(self):
-        l = self.magnitude
-        return Vector(self.x / l, self.y / l, self.z / l)
-
-    def dot(self, other):
-        return self.x * other.x + self.y * other.y + self.z * other.z
 
     def cross(self, other):
         return Vector(
