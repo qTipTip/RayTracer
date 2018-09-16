@@ -16,7 +16,7 @@ class Matrix(object):
         return self.elements[i][j]
 
     def __eq__(self, other):
-        tol = 1.0e-14
+        tol = 1.0e-5
         if self.n == other.n and self.m == other.m:
             for i in range(self.n):
                 for j in range(self.m):
@@ -94,6 +94,15 @@ class Matrix(object):
     @property
     def is_invertible(self):
         return self.determinant != 0
+
+    @property
+    def inv(self):
+        if not self.is_invertible:
+            raise ValueError('Cannot invert non-invertible matrix, determinant == 0')
+        return Matrix([
+            [self.cofactor(i, j) for j in range(self.m)]
+            for i in range(self.n)
+        ]).T * (1 / self.determinant)
 
 
 class IdentityMatrix(Matrix):
