@@ -92,3 +92,6 @@ class Vector(Tupl):
             self.z * other.x - self.x * other.z,
             self.y * other.z - self.z * other.y
         )
+
+    def reflect(self, normal):
+        return self - normal * 2 * self.dot(normal)
