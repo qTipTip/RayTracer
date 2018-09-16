@@ -43,3 +43,10 @@ def test_scaling_inverse():
     v = Vector(-4, 6, 8)
 
     assert inv * v == Vector(-2, 2, 2)
+
+
+def test_reflection():
+    t = scaling(-1, 1, 1)
+    p = Point(2, 3, 4)
+
+    assert t * p == Point(-2, 3, 4)
