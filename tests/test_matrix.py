@@ -93,3 +93,34 @@ def test_matrix_determinant_2x2():
     ])
 
     assert A.determinant() == 17
+
+
+def test_matrix_submatrix_3x3():
+    A = Matrix([
+        [1, 5, 0],
+        [-3, 2, 7],
+        [0, 6, -3]
+    ])
+    a = A.submatrix(0, 2)
+    assert a.n == 2 and a.m == 2
+    assert a == Matrix([
+        [-3, 2],
+        [0, 6]
+    ])
+
+
+def test_matrix_submatrix_4x4():
+    A = Matrix([
+        [-6, 1, 1, -6],
+        [3, 2, 5, 1],
+        [2, 1, -2, 3],
+        [1, 5, 2, 7]
+    ])
+    a = A.submatrix(0, 3)
+
+    assert a.n == 3 and a.m == 3
+    assert a == Matrix([
+        [3, 2, 5],
+        [2, 1, -2],
+        [1, 5, 2]
+    ])

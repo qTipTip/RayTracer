@@ -21,7 +21,6 @@ class Matrix(object):
             for i in range(self.n):
                 for j in range(self.m):
                     if not abs(self[i, j] - other[i, j]) < tol:
-                        print(self[i, j], other[i, j])
                         return False
             else:
                 return True
@@ -64,6 +63,12 @@ class Matrix(object):
 
     def determinant(self):
         return self[0, 0] * self[1, 1] - self[0, 1] * self[1, 0]
+
+    def submatrix(self, row, col):
+        return Matrix([
+            [self[i, j] for j in range(self.m) if j != col]
+            for i in range(self.n) if i != row
+        ])
 
 
 class IdentityMatrix(Matrix):
