@@ -91,6 +91,10 @@ class Matrix(object):
         else:
             return self.minor(row, col) * -1
 
+    @property
+    def is_invertible(self):
+        return self.determinant != 0
+
 
 class IdentityMatrix(Matrix):
     def __init__(self, n):

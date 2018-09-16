@@ -177,3 +177,26 @@ def test_matrix_determinant_4x4():
     assert A.cofactor(0, 2) == 210
     assert A.cofactor(0, 3) == 51
     assert A.determinant == -4071
+
+
+def test_matrix_invertable():
+    A = Matrix([
+        [6, 4, 4, 4],
+        [5, 5, 7, 6],
+        [4, -9, 3, -7],
+        [9, 1, 7, -6]
+    ])
+
+    assert A.determinant == -2120
+    assert A.is_invertible
+
+
+def test_matrix_non_invertable():
+    A = Matrix([
+        [-4, 2, -2, -3],
+        [9, 6, 2, 6],
+        [0, -5, 1, -5],
+        [0, 0, 0, 0]
+    ])
+    assert A.determinant == 0
+    assert not A.is_invertible
