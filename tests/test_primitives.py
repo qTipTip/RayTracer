@@ -1,3 +1,5 @@
+from math import sqrt
+
 from src.matrix import IdentityMatrix
 from src.primitives import Sphere
 from src.ray import Ray
@@ -34,3 +36,36 @@ def test_sphere_intersection_translate():
     s.set_transform(translation(5, 0, 0))
     x = r.intersects(s)
     assert len(x) == 0
+
+
+def test_sphere_normal_at_x():
+    s = Sphere()
+    n = s.normal_at(Point(1, 0, 0))
+
+    assert n == Vector(1, 0, 0)
+
+
+def test_sphere_normal_at_y():
+    s = Sphere()
+    n = s.normal_at(Point(0, 1, 0))
+    assert n == Vector(0, 1, 0)
+
+
+def test_sphere_normal_at_z():
+    s = Sphere()
+    n = s.normal_at(Point(0, 0, 1))
+    assert n == Vector(0, 0, 1)
+
+
+def test_sphere_normal_at_arbitrary():
+    s = Sphere()
+    n = s.normal_at(Point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3))
+
+    assert n == Vector(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3)
+
+
+def test_sphere_normal_normalized():
+    s = Sphere()
+    n = s.normal_at(Point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3))
+
+    assert n == n.normalize()
