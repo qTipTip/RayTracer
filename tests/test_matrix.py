@@ -1,4 +1,5 @@
 from src.matrix import Matrix
+from src.tupl import Tupl
 
 
 def test_matrix():
@@ -37,3 +38,14 @@ def test_matrix_multiplication():
     ])
 
     assert A @ B == C
+
+
+def test_matrix_tuple_multiplication():
+    A = Matrix([
+        [1, 2, 3, 4],
+        [2, 4, 4, 2],
+        [8, 6, 4, 1],
+        [0, 0, 0, 1]
+    ])
+    b = Tupl(1, 2, 3, 1)
+    assert A * b == Tupl(18, 24, 33, 1)

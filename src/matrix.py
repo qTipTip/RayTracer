@@ -1,3 +1,6 @@
+from src.tupl import Tupl
+
+
 class Matrix(object):
 
     def __init__(self, elements):
@@ -36,3 +39,14 @@ class Matrix(object):
             for i in range(self.m)
         ]
         return Matrix(elements)
+
+    def __mul__(self, other):
+        """Matrix tuple multiplication"""
+        if self.m != 4:
+            raise ValueError('Matrix dimensions not compatible')
+
+        x, y, z, w = [
+            sum([self[i, 0] * other.x, self[i, 1] * other.y, self[i, 2] * other.z, self[i, 3] * other.w])
+            for i in range(4)
+        ]
+        return Tupl(x, y, z, w)
