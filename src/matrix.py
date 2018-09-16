@@ -108,6 +108,7 @@ class Matrix(object):
         i, j = key
         self.elements[i][j] = value
 
+
 class IdentityMatrix(Matrix):
     def __init__(self, n):
         super(IdentityMatrix, self).__init__(
