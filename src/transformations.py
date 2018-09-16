@@ -44,3 +44,14 @@ def rotation_z(r):
     i[0, 1] = -sin(r)
     i[1, 0] = sin(r)
     return i
+
+
+def shearing(xy, xz, yx, yz, zx, zy):
+    i = IdentityMatrix(4)
+    i[1, 0] = yx
+    i[2, 0] = zx
+    i[0, 1] = xy
+    i[0, 2] = xz
+    i[2, 1] = zy
+    i[1, 2] = yz
+    return i

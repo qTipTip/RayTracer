@@ -1,6 +1,6 @@
 from math import pi, sqrt
 
-from src.transformations import translation, scaling, rotation_x, rotation_y, rotation_z
+from src.transformations import translation, scaling, rotation_x, rotation_y, rotation_z, shearing
 from src.tupl import Point, Vector
 
 
@@ -87,3 +87,41 @@ def test_rotation_z_axis():
 
     assert h_q * p == Point(-sqrt(2) / 2, sqrt(2) / 2, 0)
     assert h_f * p == Point(-1, 0, 0)
+
+
+def test_shearing_x_y():
+    t = shearing(1, 0, 0, 0, 0, 0)
+    p = Point(2, 3, 4)
+
+    assert t * p == Point(5, 3, 4)
+
+
+def test_shearing_x_z():
+    t = shearing(0, 1, 0, 0, 0, 0)
+    p = Point(2, 3, 4)
+
+    assert t * p == Point(6, 3, 4)
+
+
+def test_shearing_y_x():
+    t = shearing(0, 0, 1, 0, 0, 0)
+    p = Point(2, 3, 4)
+    assert t * p == Point(2, 5, 4)
+
+
+def test_shearing_y_z():
+    t = shearing(0, 0, 0, 1, 0, 0)
+    p = Point(2, 3, 4)
+    assert t * p == Point(2, 7, 4)
+
+
+def test_shearing_z_x():
+    t = shearing(0, 0, 0, 0, 1, 0)
+    p = Point(2, 3, 4)
+    assert t * p == Point(2, 3, 6)
+
+
+def test_shearing_z_y():
+    t = shearing(0, 0, 0, 0, 0, 1)
+    p = Point(2, 3, 4)
+    assert t * p == Point(2, 3, 7)
