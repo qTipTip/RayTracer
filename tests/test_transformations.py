@@ -125,3 +125,13 @@ def test_shearing_z_y():
     t = shearing(0, 0, 0, 0, 0, 1)
     p = Point(2, 3, 4)
     assert t * p == Point(2, 3, 7)
+
+
+def test_transformation_chain():
+    p = Point(1, 0, 1)
+    A = rotation_x(pi / 2)
+    B = scaling(5, 5, 5)
+    C = translation(10, 5, 7)
+    T = C @ B @ A
+
+    assert T * p == Point(15, 0, 7)
