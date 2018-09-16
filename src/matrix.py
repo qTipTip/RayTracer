@@ -104,6 +104,9 @@ class Matrix(object):
             for i in range(self.n)
         ]).T * (1 / self.determinant)
 
+    def __setitem__(self, key, value):
+        i, j = key
+        self.elements[i][j] = value
 
 class IdentityMatrix(Matrix):
     def __init__(self, n):
