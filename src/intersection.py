@@ -7,7 +7,7 @@ class Intersection(object):
 
 class Intersections(object):
     def __init__(self, *args):
-        self.objects = args
+        self.objects = list(args)
 
     def __len__(self):
         return len(self.objects)
@@ -17,3 +17,10 @@ class Intersections(object):
 
     def __setitem__(self, key, value):
         self.objects[key] = value
+
+    @property
+    def hit(self):
+        candidates = [i for i in self.objects if i.t >= 0]
+        if len(candidates) == 0:
+            return None
+        return min(candidates, key=lambda i: i.t)
