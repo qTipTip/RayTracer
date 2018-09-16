@@ -50,3 +50,13 @@ class Matrix(object):
             for i in range(4)
         ]
         return Tupl(x, y, z, w)
+
+
+class IdentityMatrix(Matrix):
+    def __init__(self, n):
+        super(IdentityMatrix, self).__init__(
+            [
+                [int(i == j) for i in range(n)]
+                for j in range(n)
+            ]
+        )

@@ -1,4 +1,4 @@
-from src.matrix import Matrix
+from src.matrix import Matrix, IdentityMatrix
 from src.tupl import Tupl
 
 
@@ -49,3 +49,16 @@ def test_matrix_tuple_multiplication():
     ])
     b = Tupl(1, 2, 3, 1)
     assert A * b == Tupl(18, 24, 33, 1)
+
+
+def test_matrix_identity():
+    A = Matrix([
+        [1, 2, 3, 4],
+        [2, 4, 4, 2],
+        [8, 6, 4, 1],
+        [0, 0, 0, 1]
+    ])
+
+    I = IdentityMatrix(4)
+
+    assert A @ I == A and I @ A == A
