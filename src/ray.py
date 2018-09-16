@@ -1,5 +1,6 @@
 from math import sqrt
 
+from src.intersection import Intersections, Intersection
 from src.tupl import Point
 
 
@@ -20,11 +21,13 @@ class Ray(object):
 
         discriminant = b * b - 4 * a * c
         if discriminant < 0:
-            return []
+            return Intersections()
         else:
             t1 = (-b - sqrt(discriminant)) / (2 * a)
             t2 = (-b + sqrt(discriminant)) / (2 * a)
+            i1 = Intersection(s, t1)
+            i2 = Intersection(s, t2)
             if t1 > t2:
-                return [t2, t1]
+                return Intersections(i2, i1)
             else:
-                return [t1, t2]
+                return Intersections(i1, i2)

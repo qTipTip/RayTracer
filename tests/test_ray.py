@@ -27,8 +27,8 @@ def test_ray_intersect_sphere_middle():
     x = r.intersects(s)
 
     assert len(x) == 2
-    assert x[0] == 4
-    assert x[1] == 6
+    assert x[0].t == 4
+    assert x[1].t == 6
 
 
 def test_ray_intersect_sphere_tangent():
@@ -37,8 +37,8 @@ def test_ray_intersect_sphere_tangent():
     x = r.intersects(s)
 
     assert len(x) == 2
-    assert x[0] == 5
-    assert x[1] == 5
+    assert x[0].t == 5
+    assert x[1].t == 5
 
 
 def test_ray_intersect_sphere_no_intersection():
@@ -55,8 +55,8 @@ def test_ray_intersect_from_middle():
     x = r.intersects(s)
 
     assert len(x) == 2
-    assert x[0] == -1
-    assert x[1] == 1
+    assert x[0].t == -1
+    assert x[1].t == 1
 
 
 def test_ray_intersect_from_behind():
@@ -65,5 +65,15 @@ def test_ray_intersect_from_behind():
     x = r.intersects(s)
 
     assert len(x) == 2
-    assert x[0] == -6
-    assert x[1] == -4
+    assert x[0].t == -6
+    assert x[1].t == -4
+
+
+def test_ray_intersects_sphere_object():
+    r = Ray(Point(0, 0, -5), Vector(0, 0, 1))
+    s = Sphere()
+    x = r.intersects(s)
+
+    assert len(x) == 2
+    assert x[0].object == s
+    assert x[1].object == s
