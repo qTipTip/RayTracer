@@ -1,4 +1,6 @@
-from src.transformations import translation, scaling
+from math import pi, sqrt
+
+from src.transformations import translation, scaling, rotation_x, rotation_y, rotation_z
 from src.tupl import Point, Vector
 
 
@@ -50,3 +52,38 @@ def test_reflection():
     p = Point(2, 3, 4)
 
     assert t * p == Point(-2, 3, 4)
+
+
+def test_rotation_x_axis():
+    p = Point(0, 1, 0)
+    h_q = rotation_x(pi / 4)
+    f_q = rotation_x(pi / 2)
+
+    assert h_q * p == Point(0, sqrt(2) / 2, sqrt(2) / 2)
+    assert f_q * p == Point(0, 0, 1)
+
+
+def test_rotation_x_axis_inverse():
+    p = Point(0, 1, 0)
+    h_q = rotation_x(pi / 4)
+    inv = h_q.inv
+
+    assert inv * p == Point(0, sqrt(2) / 2, -sqrt(2) / 2)
+
+
+def test_rotation_y_axis():
+    p = Point(0, 0, 1)
+    h_q = rotation_y(pi / 4)
+    h_f = rotation_y(pi / 2)
+
+    assert h_q * p == Point(sqrt(2) / 2, 0, sqrt(2) / 2)
+    assert h_f * p == Point(1, 0, 0)
+
+
+def test_rotation_z_axis():
+    p = Point(0, 1, 0)
+    h_q = rotation_z(pi / 4)
+    h_f = rotation_z(pi / 2)
+
+    assert h_q * p == Point(-sqrt(2) / 2, sqrt(2) / 2, 0)
+    assert h_f * p == Point(-1, 0, 0)
