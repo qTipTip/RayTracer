@@ -16,7 +16,7 @@ class Sphere(Primitive):
 
     def normal_at(self, point):
         object_point = self.transform.inv * point
-        object_normal = object_point - Point(0, 0, 0)
+        object_normal = object_point - self.origin
         world_normal = self.transform.inv.T * object_normal
         world_normal.w = 0
         return world_normal.normalize()

@@ -75,11 +75,11 @@ def test_sphere_normal_at_translate():
     s = Sphere()
     s.set_transform(translation(0, 1, 0))
     n = s.normal_at(Point(0, 1.70711, -0.70711))
-    assert n == Vector(0, 0.70711, -0.0711)
+    assert n == Vector(0, 0.7071067811865475, -0.7071067811865476)
 
 
 def test_sphere_normal_at_scaled():
     s = Sphere()
-    s.set_transform(translation(1, 0.5, 1))
+    s.set_transform(scaling(1, 0.5, 1))
     n = s.normal_at(Point(0, sqrt(2) / 2, -sqrt(2) / 2))
-    assert n == Vector(0, 0.97014, -0.24254)
+    assert n == Vector(0, 0.9701425001453319, -0.24253562503633297)

@@ -10,7 +10,7 @@ def test_intersection_init():
     assert i.object == s
 
 
-def test_intserction_aggregation():
+def test_intersection_aggregation():
     s = Sphere()
     i1 = Intersection(s, 1)
     i2 = Intersection(s, 2)
