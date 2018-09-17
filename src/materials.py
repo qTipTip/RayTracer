@@ -15,6 +15,26 @@ class Material(object):
             self.diffuse - other.diffuse) < tol and abs(self.diffuse - other.diffuse) < tol and abs(
             self.specular - other.specular) < tol and abs(self.shininess - other.shininess) < tol
 
+    def lighting(self, light, position, eyev, normalv):
+        effective_color = self.color * light.intensity
+        lightv = (light.position - position).normalize()
+        ambient = effective_color * self.ambient
+        light_dot_normal = lightv.dot(normalv)
+
+        if light_dot_normal < 0:
+            diffuse = Color(0, 0, 0)
+            specular = Color(0, 0, 0)
+        else:
+            diffuse = effective_color * self.diffuse * light_dot_normal
+            reflectv = -lightv.reflect(normalv)
+            reflect_dot_eye = pow(reflectv.dot(eyev), self.shininess)
+
+            if reflect_dot_eye <= 0:
+                specular = Color(0, 0, 0)
+            else:
+                specular = light.intensity * self.specular * reflect_dot_eye
+        return ambient + diffuse + specular
+
 
 class DefaultMaterial(Material):
     def __init__(self):
