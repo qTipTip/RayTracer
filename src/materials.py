@@ -33,7 +33,8 @@ class Material(object):
                 specular = Color(0, 0, 0)
             else:
                 specular = light.intensity * self.specular * reflect_dot_eye
-        return ambient + diffuse + specular
+        color_vec = ambient + diffuse + specular
+        return Color(color_vec.x, color_vec.y, color_vec.z)
 
 
 class DefaultMaterial(Material):
