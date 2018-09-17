@@ -1,3 +1,4 @@
+from src.materials import DefaultMaterial
 from src.matrix import IdentityMatrix
 from src.tupl import Point
 
@@ -7,9 +8,13 @@ class Primitive(object):
     def __init__(self):
         self.transform = IdentityMatrix(4)
         self.origin = Point(0, 0, 0)
+        self.material = DefaultMaterial()
 
     def set_transform(self, transform):
         self.transform = transform
+
+    def set_material(self, m):
+        self.material = m
 
 
 class Sphere(Primitive):

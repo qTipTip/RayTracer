@@ -1,5 +1,7 @@
 from math import sqrt
 
+from src.color import Color
+from src.materials import DefaultMaterial, Material
 from src.matrix import IdentityMatrix
 from src.primitives import Sphere
 from src.ray import Ray
@@ -83,3 +85,18 @@ def test_sphere_normal_at_scaled():
     s.set_transform(scaling(1, 0.5, 1))
     n = s.normal_at(Point(0, sqrt(2) / 2, -sqrt(2) / 2))
     assert n == Vector(0, 0.9701425001453319, -0.24253562503633297)
+
+
+def test_sphere_material():
+    s = Sphere()
+    m = s.material
+
+    assert m == DefaultMaterial()
+
+
+def test_sphere_material_assignment():
+    s = Sphere()
+    m = Material(Color(1, 1, 1), 2, 1, 0.5, 12)
+
+    s.set_material(m)
+    assert s.material == m
